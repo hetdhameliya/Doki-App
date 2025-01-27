@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* If you need different padding for iOS */
+.ios .custom-header ion-toolbar {
+  --padding-top: 3rem;
+  --padding-bottom: 1rem;
+}
+
+/* If you need different padding for Android */
+.md .custom-header ion-toolbar {
+  --padding-top: 3rem;
+  --padding-bottom: 1rem;
+}
+
+
+/** other custom global styles can go here */

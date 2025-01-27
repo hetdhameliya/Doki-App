@@ -3,5 +3,23 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "react-vite"
+  "type": "react-vite",
+  "plugins": {
+    "Keyboard": {
+      "resize": "none",
+      "style": "dark",
+      "resizeOnFullScreen": true
+    },
+    "StatusBar": {
+      "statusbarPadding": true
+    }
+  },
+  "android": {
+    "style": "default",
+    "androidWindowSoftInputMode": "adjustResize",
+    "androidNavigationBarVisible": true
+  },
+  "ios": {
+    "contentInset": "always"
+  }
 }
