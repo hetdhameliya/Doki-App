@@ -32,7 +32,7 @@ const tabItems = [
 
 const hideTabsRoutes = ["/login", "/register"];
 
-export default function BottomTabBar() {
+const BottomTabBar: React.FC = () => {
   const location = useLocation();
   const hideTabs = hideTabsRoutes.includes(location.pathname);
 
@@ -53,3 +53,5 @@ export default function BottomTabBar() {
     </IonTabBar>
   );
 }
+
+export default BottomTabBar;

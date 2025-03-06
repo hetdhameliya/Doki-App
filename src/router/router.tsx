@@ -4,8 +4,9 @@ import { Redirect, Route,  } from 'react-router-dom';
 import { IonRouterOutlet, IonTabs } from '@ionic/react';
 import HomePage from '../pages/HomePage';
 import RadioPage from '../pages/RadioPage';
-import BottomTabBar from './BottomTabBar';
+
 import Login from '../pages/Login/Login';
+import BottomTabBar from './BottomTabBar';
 
 export default function Router() {
 
@@ -13,6 +14,7 @@ export default function Router() {
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          
           <Redirect exact path="/" to="/login" />
           <Route path="/home" render={() => <HomePage />} exact={true} />
           <Route path="/radio" render={() => <RadioPage />} exact={true} />
@@ -20,7 +22,7 @@ export default function Router() {
         </IonRouterOutlet>
 
         {/* Move useLocation inside a child component */}
-        <BottomTabBar />
+        <BottomTabBar/>
       </IonTabs>
     </IonReactRouter>
   );
