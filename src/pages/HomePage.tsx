@@ -5,13 +5,11 @@ const HomePage = () => (
 
   <IonPage>
     <IonHeader translucent >
-      
-      <IonToolbar>
+      <IonToolbar color='light'>
         <IonTitle>Listen now</IonTitle>
       </IonToolbar>
-    </IonHeader>
+    </IonHeader> 
     <IonContent fullscreen scrollEvents>
-      <p className='text-[30px]'>hello</p>
     </IonContent>
   </IonPage>
 );

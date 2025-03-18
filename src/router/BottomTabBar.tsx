@@ -39,15 +39,17 @@ const BottomTabBar: React.FC = () => {
   if (hideTabs) return null; 
 
   return (
-    <IonTabBar slot="bottom">
+    <IonTabBar slot="bottom"color="light" >
       {tabItems.map((item) => (
         <IonTabButton 
           key={item.tab}
           tab={item.tab} 
           href={item.href}
         >
-          <IonIcon icon={item.icon} />
-          <IonLabel>{item.label}</IonLabel>
+          <IonIcon 
+            icon={item.icon} 
+            style={{ color: location.pathname === item.href ? '#8A79FD' : undefined }}
+          />
         </IonTabButton>
       ))}
     </IonTabBar>
