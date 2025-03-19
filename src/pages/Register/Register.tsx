@@ -1,13 +1,14 @@
-import { IonButton, IonInput, IonPage, IonContent } from "@ionic/react";
+import { IonButton, IonInput, IonPage, IonContent, IonIcon } from "@ionic/react";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { REGEX } from "../../constants/Regex";
 import { useHistory } from "react-router-dom";
+import { arrowBack } from "ionicons/icons";
 
 export default function Register() {
   const history = useHistory();
-  
+
   const register = useFormik({
     initialValues: {
       username: "",
@@ -36,77 +37,94 @@ export default function Register() {
       }
     },
   });
+  const handleBack = () => {
+    history.goBack();
+  };
 
   return (
     <IonPage>
-      <IonContent>
-        <div className="flex flex-col justify-center h-full w-full p-[30px] space-y-[20px]">
-          <div>
-            <span className="text-[24px] primary font-[700]">My...</span>
-          </div>
-
-          {/* Username Input */} 
-          <div className="space-y-[5px]">
-            <IonInput
-              label="Username"
-              labelPlacement="floating"
-              fill="outline"
-              placeholder="Enter Your Username"
-              name="username"
-              value={register.values.username}
-              onIonInput={(e) => register.setFieldValue("username", e.detail.value)}
-              onBlur={register.handleBlur}
-            />
-            <ErrorMessage message={register.touched.username ? register.errors.username : undefined} />
-          </div>
-
-          {/* Email Input */}
-          <div className="space-y-[5px]">
-            <IonInput
-              label="Email"
-              labelPlacement="floating"
-              fill="outline"
-              placeholder="Enter Your Email"
-              name="email"
-              value={register.values.email}
-              onIonInput={(e) => register.setFieldValue("email", e.detail.value)}
-              onBlur={register.handleBlur}
-            />
-            <ErrorMessage message={register.touched.email ? register.errors.email : undefined} />
-          </div>
-
-          {/* Password Input */}
-          <div className="space-y-[5px]">
-            <IonInput
-              label="Password"
-              labelPlacement="floating"
-              fill="outline"
-              placeholder="Enter Your Password"
-              type="password"
-              name="password"
-              value={register.values.password}
-              onIonInput={(e) => register.setFieldValue("password", e.detail.value)}
-              onBlur={register.handleBlur}
-            />
-            <ErrorMessage message={register.touched.password ? register.errors.password : undefined} />
-          </div>
-
-          <IonButton expand="block" type="submit" disabled={register.isSubmitting} onClick={()=>{
-            register.handleSubmit()
-          }}>
-            Register
-          </IonButton>
-
-          <div className="text-center">
-            <p className="text-gray-600">
-              Already have an account?{" "}
-              <span 
-                className="text-primary primary font-[500] cursor-pointer" 
-                onClick={() => history.push("/login")}
-              >
-                Login here
+      <IonContent scrollY={true} className="ion-padding">
+        <div className="flex min-h-full w-full items-center justify-center">
+          <div className="w-full max-w-[400px] p-[30px] space-y-[20px]">
+            <div className="flex items-center sticky top-0 bg-white z-10">
+              <IonIcon
+                icon={arrowBack}
+                className="text-[24px] text-[#8A79FD] cursor-pointer"
+                onClick={handleBack}
+              />
+            </div>
+            <div className="space-y-[5px]">
+              <span className="text-[24px] font-[700] text-[#8A79FD]">
+                Create Account
               </span>
-            </p>
+              <p className="text-[16px] text-[#6B7280] mt-[5px] leading-[1.6]">
+                Create your account to access our features and get started.
+              </p>
+            </div>
+
+            {/* Username Input */}
+            <div className="space-y-[5px]">
+              <IonInput
+                label="Username"
+                labelPlacement="floating"
+                fill="outline"
+                placeholder="john.doe123"
+                name="username"
+                value={register.values.username}
+                onIonInput={(e) => register.setFieldValue("username", e.detail.value)}
+                onBlur={register.handleBlur}
+              />
+              <ErrorMessage message={register.touched.username ? register.errors.username : undefined} />
+            </div>
+
+            {/* Email Input */}
+            <div className="space-y-[5px]">
+              <IonInput
+                label="Email"
+                labelPlacement="floating"
+                fill="outline"
+                placeholder="your.email@example.com"
+                name="email"
+                value={register.values.email}
+                onIonInput={(e) => register.setFieldValue("email", e.detail.value)}
+                onBlur={register.handleBlur}
+              />
+              <ErrorMessage message={register.touched.email ? register.errors.email : undefined} />
+            </div>
+
+            {/* Password Input */}
+            <div className="space-y-[5px]">
+              <IonInput
+                label="Password"
+                labelPlacement="floating"
+                fill="outline"
+                placeholder="Enter your secure password"
+                type="password"
+                name="password"
+                value={register.values.password}
+                onIonInput={(e) => register.setFieldValue("password", e.detail.value)}
+                onBlur={register.handleBlur}
+              />
+              <ErrorMessage message={register.touched.password ? register.errors.password : undefined} />
+            </div>
+
+            <IonButton className="capitalize" expand="block" type="submit" disabled={register.isSubmitting} onClick={() => {
+              register.handleSubmit()
+            }}>
+              Register
+            </IonButton>
+
+            <div className="text-center">
+              <p className="text-gray-600">
+                Already have an account?{" "}
+                <span
+                  className="text-primary primary font-[500] cursor-pointer"
+                  onClick={() => history.push("/login")}
+                >
+                  Login here
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </IonContent>

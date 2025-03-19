@@ -30,7 +30,7 @@ const tabItems = [
   }
 ];
 
-const hideTabsRoutes = ["/login", "/register"];
+const hideTabsRoutes = ["/login", "/register","/email-verification"];
 
 const BottomTabBar: React.FC = () => {
   const location = useLocation();

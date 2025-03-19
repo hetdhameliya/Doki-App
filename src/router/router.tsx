@@ -8,6 +8,7 @@ import RadioPage from '../pages/RadioPage';
 import Login from '../pages/Login/Login';
 import BottomTabBar from './BottomTabBar';
 import Register from '../pages/Register/Register';
+import EmailVerification from '../pages/EmailVerification/EmailVerification';
 
 export default function Router() {
 
@@ -19,6 +20,8 @@ export default function Router() {
           <Redirect exact path="/" to="/login" />
           <Route path="/register" render={() => <Register />} exact={true} />
           <Route path="/home" render={() => <HomePage />} exact={true} />
+          <Route path="/email-verification" render={() => <EmailVerification />} exact={true} />
+          
           <Route path="/radio" render={() => <RadioPage />} exact={true} />
           <Route path="/login" render={() => <Login />} exact={true} />
         </IonRouterOutlet>
